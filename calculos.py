@@ -85,4 +85,18 @@ def juros_compostos_inflacao(C, i, t):
 
     return anos, nominal, real, inflacao, fallback
 
+def_juros_compostos_aporte(C, i, t, aporte):
+    anos = []
+    valores = []
 
+    M = C
+
+    for ano in range(1, t + 1):
+
+        M *= (1 + i)
+        M += aporte * 12  # Adiciona o aporte anual
+
+        anos.append(ano)
+        valores.append(M)
+
+    return anos, valores

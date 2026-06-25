@@ -3,24 +3,25 @@ import matplotlib.pyplot as plt
 from calculos import (
     juros_simples,
     juros_compostos,
-    juros_compostos_inflacao
+    juros_compostos_inflacao,
+    juros_compostos_aporte
 )
 
-st.title("📊 Calculadora Financeira")
+st.sidebar.title("Configurações")
 
 # -------------------------
 # Inputs
 # -------------------------
-C = st.number_input("Capital inicial", value=1000.0)
-i = st.number_input("Taxa de juros (%)", value=10.0) / 100
-t = st.number_input("Anos", value=5, step=1)
-
+C = st.sidebar.number_input("Capital inicial", value=1000.0)
+i = st.sidebar.number_input("Taxa de juros (%)", value=10.0) / 100
+t = st.sidebar.number_input("Anos", value=5, step=1)
+aporte = st.sidebar.number_input("Aporte mensal", value=0.0, step = 50)
 # -------------------------
 # Menu
 # -------------------------
 opcao = st.selectbox(
     "Escolha o tipo de juros:",
-    ["Simples", "Compostos", "Compostos + Inflação"]
+    ["Simples", "Compostos", "Compostos + Inflação", "Compostos com aporte"]
 )
 
 # -------------------------
@@ -51,6 +52,12 @@ if st.button("Calcular"):
         ax.set_ylabel("Valor (R$)")
         ax.legend()
         st.pyplot(fig)
+
+    elif opcao == "Compostos com aporte":
+        anos, valores = juros_compostos_aporte(C, i, t, aporte)
+
+        st.line_chart({"Com aporte": valores})
+
 
     else:
         anos, nominal, real, inflacao, fallback = juros_compostos_inflacao(C, i, t)
