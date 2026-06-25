@@ -85,7 +85,7 @@ def juros_compostos_inflacao(C, i, t):
 
     return anos, nominal, real, inflacao, fallback
 
-def_juros_compostos_aporte(C, i, t, aporte):
+def juros_compostos_aporte(C, i, t, aporte):
     anos = []
     valores = []
 

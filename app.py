@@ -15,7 +15,7 @@ st.sidebar.title("Configurações")
 C = st.sidebar.number_input("Capital inicial", value=1000.0)
 i = st.sidebar.number_input("Taxa de juros (%)", value=10.0) / 100
 t = st.sidebar.number_input("Anos", value=5, step=1)
-aporte = st.sidebar.number_input("Aporte mensal", value=0.0, step = 50)
+aporte = st.sidebar.number_input("Aporte mensal", value=0.0, step = 50.0)
 # -------------------------
 # Menu
 # -------------------------
