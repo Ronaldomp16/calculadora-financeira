@@ -1,4 +1,4 @@
-# 📊 Calculadora Financeira
+# Calculadora Financeira
 
 Projeto em Python com Streamlit para simulação de investimentos.
 
