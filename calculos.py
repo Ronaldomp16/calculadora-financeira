@@ -100,3 +100,23 @@ def juros_compostos_aporte(C, i, t, aporte):
         valores.append(M)
 
     return anos, valores
+
+def juros_com_inflacao_manual(C, i, t, inflacao_manual):
+
+    anos = []
+    nominal = []
+    real = []
+
+    M = C
+
+    for ano in range(1, t + 1):
+
+        M *= (1 + i)
+
+        valor_real = M / ((1 + inflacao_manual) ** ano)
+
+        anos.append(ano)
+        nominal.append(M)
+        real.append(valor_real)
+
+    return anos, nominal, real, inflacao_manual, False
